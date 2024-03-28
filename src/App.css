@@ -153,3 +153,23 @@
 	text-align: center;
 }
 
+@media screen and (max-width: 768px) {
+	.menu-line {
+			position: fixed;
+				top: 180px;
+				left: 0;
+				width: 100%;
+				z-index: 1000;
+				/* 다른 요소 위에 나타나도록 설정 */
+		}
+	.menus {
+		display: flex;
+		flex-direction: column;
+		/* 세로 방향으로 정렬 */
+	}
+
+	.item {
+		margin-bottom: 10px;
+		/* 각 아이템 사이에 여백 추가 */
+	}
+}
