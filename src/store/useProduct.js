@@ -8,13 +8,13 @@ export const useProducts = create((set)=>({
 			productList: state.productList.map((item) =>
 				item.id === id ? { ...item, status: 'favorite' } : item
 			)
-	}))
+		}))
 	},
 	deleteItemStatus:(id)=>{
 		set((state) => ({
 			productList: state.productList.map((item) =>
 				item.id === id ? { ...item, status: '' } : item
 			)
-	}))
+		}))
 	}
 }))
