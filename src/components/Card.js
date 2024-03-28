@@ -25,10 +25,10 @@ const Card = ({item}) => {
 					e.stopPropagation();//이벤트 버블링 차단
 					if(item.status ===''){
 						setItemStatus(item.id);  //proudctList에 있는 item을 변화시켜야 된다.
-						addItem(item)
+						addItem(item); //favoriteList에 item추가
 					} else {
-						deleteItemStatus(item.id);
-						removeItem(item.id);
+						deleteItemStatus(item.id);  //productList의 item변화시키기
+						removeItem(item.id); //favoriteList에서 item 제거
 					}
 				}}
 			/>
