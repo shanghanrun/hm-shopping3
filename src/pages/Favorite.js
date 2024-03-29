@@ -4,11 +4,32 @@ import {Button} from 'react-bootstrap'
 import {useNavigate} from 'react-router-dom'
 import Card2 from '../components/Card2'
 import {Container, Row, Col} from 'react-bootstrap';
+import { useCart } from '../store/useCart'
+import { useProducts } from '../store/useProduct'
 
 const Favorite = () => {
-	const {favoriteList} = useFavorite()
+	const {favoriteList, emptyFavoriteList} = useFavorite()
+	const{addList} = useCart()
+	const{deleteItemStatus, setItemCount} = useProducts()
 	const navigate = useNavigate()
 	console.log('favoriteList : ', favoriteList)
+	function sendToCart(){
+		// favoriteList.forEach((item)=>{
+		// 	setItemCount(item.id, 1)  
+		// })
+		let newList = favoriteList.map((item)=> ({...item, count: 1}))
+
+		addList([...newList]) //새로운 배열로
+
+		//Favorite비우고, Favorite속성도 제거하기
+		//그런데,favoriteList를 삭제하기 전에, 속성제거해야 된다.
+		// favoriteList자체가 없으면 속성제거 못함.
+		favoriteList.forEach((item)=>{
+			deleteItemStatus(item.id)
+		})
+		emptyFavoriteList()
+		navigate('/cart')
+	}
   return (
 	<div className='favorite-info'>
 		<div className="favorite-card">
@@ -19,7 +40,7 @@ const Favorite = () => {
 				</Row>
 			</Container>
 			<div className="favorite-info-button">
-					<Button variant="primary" onClick={()=>navigate('/')}>Home</Button>
+					<Button variant="primary" onClick={sendToCart}>장바구니로</Button>
 			</div>
 		</div>
 	</div>

@@ -3,10 +3,15 @@ import {Container, Form, Button} from 'react-bootstrap'
 import {useNavigate} from 'react-router-dom'
 import { useAuth } from '../store/useAuth'
 import { useUser } from '../store/useUser'
+import { useFavorite } from '../store/useFavorite'
+import { useCart } from '../store/useCart'
 
 const Login = () => {
 	const {setAuth} = useAuth()
 	const {setUser} = useUser()
+	const {emptyFavoriteList} = useFavorite()
+	const {emptyItemList} = useCart()
+
 	const [formData, setFormData] = useState({
 		email:'',
 		password:''
@@ -18,6 +23,10 @@ const Login = () => {
 		setAuth(true)
 		setUser(formData) // <---임시저장formData <--- form으로부터 입력값.
 		navigate('/')
+		//모든 곳의 값을 초기화한다. Favorite, Cart
+		emptyFavoriteList()
+		emptyItemList()
+
 	}
 	const handleChange=(event)=>{
 		const {name, value} = event.target

@@ -16,5 +16,12 @@ export const useProducts = create((set)=>({
 				item.id === id ? { ...item, status: '' } : item
 			)
 		}))
+	},
+	setItemCount:(id, count)=>{
+		set((state) => ({
+			productList: state.productList.map((item) =>
+				item.id === id ? { ...item, "count": count } : item
+			)
+		}))
 	}
 }))
