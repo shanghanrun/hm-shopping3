@@ -5,7 +5,7 @@ import { useFavorite } from '../store/useFavorite'
 import { useProducts} from '../store/useProduct';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
-const Card = ({item}) => {
+const Card2 = ({item}) => {
 	const {addItem, removeItem} = useFavorite()
 	const {setItemStatus, deleteItemStatus} = useProducts();
 
@@ -38,4 +38,4 @@ const Card = ({item}) => {
   )
 }
 
-export default Card
+export default Card2

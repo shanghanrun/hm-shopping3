@@ -5,7 +5,7 @@ import { useCart } from '../store/useCart'
 import { useProducts} from '../store/useProduct';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
-const Card = ({item}) => {
+const Card3 = ({item}) => {
 	const {addItem, removeItem} = useCart()
 	const {setItemStatus, deleteItemStatus} = useProducts();
 
@@ -37,4 +37,4 @@ const Card = ({item}) => {
   )
 }
 
-export default Card
+export default Card3
