@@ -7,7 +7,6 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const Card3 = ({item}) => {
 	const {addItem, removeItem} = useCart()
-	const {setItemStatus, deleteItemStatus} = useProducts();
 
 
   return (
