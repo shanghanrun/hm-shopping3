@@ -59,7 +59,7 @@
 	width: 150px;
 }
 
-.card{
+.card, .card2{
 	padding-bottom: 10px;
 		margin-bottom: 10px;
 		transition: all 0.6s;
@@ -83,6 +83,10 @@
 }
 .favorite2:hover{
 	font-size: 30px;
+	cursor:pointer;
+}
+.trash:hover{
+	color: red;
 	cursor:pointer;
 }
 .favorite2.clicked {
@@ -147,10 +151,13 @@
 .user-card, .favorite-card, .cart-card{
 	border: 1px solid black;
 	padding: 10px;
-	width: 500px;
+	width: 800px;
 }
 .user-info-button, .favorite-info-button, .cart-info-button{
 	text-align: center;
+}
+.trash{
+	text-align: end;
 }
 
 @media screen and (max-width: 768px) {
