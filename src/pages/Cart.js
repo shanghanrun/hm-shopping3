@@ -9,34 +9,36 @@ import {Container, Row, Col} from 'react-bootstrap';
 const Cart = () => {
   const {itemList} = useCart()
   const navigate = useNavigate()
-//   const [totalPrice, setTotalPrice] = useState(0);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [totalPrice, setTotalPrice] = useState(0)
   console.log('itemList :', itemList)
 
-  // 계산된 totalPrice를 업데이트하는 함수
-//   const calculateTotalPrice = () => {
-// 	console.log('호버링')
-//     let total = 0;
-//     itemList.forEach(item => {
-//       total += item.price * item.count;
-//     });
-//     setTotalPrice(total);
-//   };
-  // 마우스가 버튼 위에서 벗어났을 때 totalPrice를 초기화하는 함수
-//   const clearTotalPrice = () => {
-//     setTotalPrice(0);
-//   };
+	const calculateTotalPrice = () => {
+		let total =0;
+		itemList.forEach(item => {
+		total += item.price * item.count;
+		});
+		setTotalPrice(total);
+	};
 
   const payment=()=>{
-	 let total = 0;
-    itemList.forEach(item => {
-      total += item.price * item.count;
-    });
-	alert(`지불할 총 금액: ${total}원 입니다.`)
-	navigate('/')
+	calculateTotalPrice(); // 총 금액 계산
+    setIsDialogOpen(true); // 다이얼로그 열기
   }
+  // 다이얼로그 닫기
+  const handleCloseDialog = () => {
+    setIsDialogOpen(false);
+    navigate('/');
+  };
 
   return (
     <div className='cart-info'>
+		{isDialogOpen && <dialog open>
+			<p>지불할 총 금액: {totalPrice}원 입니다.</p>
+			<form method="dialog">
+				<Button variant="danger" onClick={handleCloseDialog}>확인</Button>
+			</form>
+		</dialog>}
 		<div className="cart-card">
 			<h1>Cart Items : {itemList.length}</h1>
 			<Container>

@@ -14,9 +14,9 @@ const Favorite = () => {
 	const navigate = useNavigate()
 	console.log('favoriteList : ', favoriteList)
 	function sendToCart(){
-		// favoriteList.forEach((item)=>{
-		// 	setItemCount(item.id, 1)  
-		// })
+		favoriteList.forEach((item)=>{  //Product에도 반영
+			setItemCount(item.id, 1)  
+		})
 		let newList = favoriteList.map((item)=> ({...item, count: 1}))
 
 		addList([...newList]) //새로운 배열로
