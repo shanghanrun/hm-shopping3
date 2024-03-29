@@ -1,6 +1,6 @@
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useState } from 'react'
+import React from 'react'
 import { useFavorite } from '../store/useFavorite'
 import { useNavigate } from 'react-router-dom';
 import { useProducts} from '../store/useProduct';
