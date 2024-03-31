@@ -5,8 +5,9 @@ import { faHeart, faUser } from '@fortawesome/free-regular-svg-icons'
 import { faSearch, faShoppingBag } from '@fortawesome/free-solid-svg-icons'
 import { useAuth } from '../store/useAuth'
 import { useProducts } from '../store/useProduct'
+import {Navbar, Container, Nav, Offcanvas} from 'react-bootstrap'
 
-const Navbar = () => {
+const NavbarCom = () => {
 	const menus=[
 		'Women', 'Men', 'Baby','Kids',
 		'H&M HOME', 'Sport', 'Sale' 
@@ -85,17 +86,35 @@ const Navbar = () => {
 		<div className='logo' onClick={()=>navigate('/')}>
 			<img width="150px" src='https://tse4.mm.bing.net/th?id=OIP._RBfiehkYJpMAx03aSy0AQHaE4&pid=Api&P=0&h=220' alt='hmlogo' />
 		</div>
-		<div className='menu-line'>
-			<ul className='menus'>
-				{menus.map((menu,i)=><li className='item' key={i}>{menu}</li>)}
-			</ul>
-			<div className="search">
-				<FontAwesomeIcon icon={faSearch} />
-				<input id='input' type="text" onKeyPress={(event)=>search(event)} placeholder="제품 검색" />
-			</div>
-		</div>
+		<Navbar expand="lg" className="bg-body-tertiary">
+			<Container fluid>
+				<Navbar.Collapse id="navbarScroll">
+					 <Navbar.Offcanvas
+						id='offcanvasNavbar-expand-sm'
+						aria-labelledby='offcanvasNavbarLabel-expand-sm'
+						placement="end"
+					>
+						<Offcanvas.Header closeButton>
+							<Offcanvas.Title id='offcanvasNavbarLabel-expand-expand'>
+							Offcanvas
+							</Offcanvas.Title>
+						</Offcanvas.Header>
+						<Offcanvas.Body>		
+							<Nav className="me-auto my-2 my-lg-0"
+								style={{ maxHeight: '100px' }} navbarScroll>
+								{menus.map((menu,i)=><Nav.Link className='item' key={i}>{menu}</Nav.Link>)}
+							</Nav>
+						</Offcanvas.Body>
+					</Navbar.Offcanvas>
+					<div className="d-flex">
+						<FontAwesomeIcon icon={faSearch} />	
+						<input id='input' type="text" onKeyPress={(event)=>search(event)} placeholder="제품 검색" />
+					</div>
+				</Navbar.Collapse>
+			</Container>
+		</Navbar>
 	</div>
   )
 }
 
-export default Navbar
+export default NavbarCom

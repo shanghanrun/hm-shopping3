@@ -6,7 +6,7 @@ import ProductAll from './pages/ProductAll';
 import Login from './pages/Login';
 import UserInfo from './pages/UserInfo';
 import Cart from './pages/Cart';
-import Navbar from './components/Navbar';
+import NavbarCom from './components/Navbar';
 import Favorite from './pages/Favorite';
 import { useAuth } from './store/useAuth';
 import { Navigate} from 'react-router-dom'
@@ -18,7 +18,7 @@ function App() {
   }
   return (
     <div>
-      <Navbar />
+      <NavbarCom />
       <Routes>
         <Route path='/' element={<ProductAll/>} />
         <Route path='/login' element={<Login/>} />
