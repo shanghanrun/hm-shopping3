@@ -161,23 +161,52 @@
 	text-align: end;
 }
 
+
+.menu-line{
+	position:relative;
+}
+.toggleBtn{
+	position:absolute;
+	top: 120px;
+	left: 30px;
+	font-size:30px;
+	display:none;
+}
+
 @media screen and (max-width: 768px) {
 	.menu-line {
 			position: fixed;
-				top: 180px;
+				top: 0px;
 				left: 0;
 				width: 100%;
 				z-index: 1000;
 				/* 다른 요소 위에 나타나도록 설정 */
 		}
 	.menus {
+		position: absolute;
+		top:150px;
+		left: 30px;
 		display: flex;
 		flex-direction: column;
+		display:none;
 		/* 세로 방향으로 정렬 */
 	}
 
 	.item {
-		margin-bottom: 10px;
+		margin-bottom: 3px;
 		/* 각 아이템 사이에 여백 추가 */
+	}
+	.search{
+		position: absolute;
+		top: 160px;
+		left: 220px;
+		display:none;
+	}
+	.toggleBtn{
+		display:block;
+	}
+	.menus.active2,
+	.search.active2 {
+		display: block;
 	}
 }

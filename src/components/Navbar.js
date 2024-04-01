@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import {useNavigate} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faUser } from '@fortawesome/free-regular-svg-icons'
-import { faSearch, faShoppingBag } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faShoppingBag, faBars } from '@fortawesome/free-solid-svg-icons'
 import { useAuth } from '../store/useAuth'
 import { useProducts } from '../store/useProduct'
 
@@ -15,6 +15,8 @@ const Navbar = () => {
 	const {makeList} =useProducts()
 	const [keyword, setKeyword] = useState('')
 	const navigate = useNavigate()
+	const menuRef = useRef()
+	const searchRef =useRef()
 
 	function handleLoginClick(){
 		if(auth===false){
@@ -59,6 +61,11 @@ const Navbar = () => {
 		console.log('products : ', data)
 		makeList(data)
 	}
+	function showMenu(e){
+		e.stopPropagation();
+    	menuRef.current.classList.toggle('active2');
+        searchRef.current.classList.toggle('active2');
+	}
   
 	useEffect(()=>{
 		getProducts()
@@ -85,13 +92,16 @@ const Navbar = () => {
 		<div className='logo' onClick={()=>navigate('/')}>
 			<img width="150px" src='https://tse4.mm.bing.net/th?id=OIP._RBfiehkYJpMAx03aSy0AQHaE4&pid=Api&P=0&h=220' alt='hmlogo' />
 		</div>
-		<div className='menu-line'>
-			<ul className='menus'>
+		<div className='menu-line' >
+			<ul className='menus' ref={menuRef} >
 				{menus.map((menu,i)=><li className='item' key={i}>{menu}</li>)}
 			</ul>
-			<div className="search">
+			<div className="search" ref={searchRef}>
 				<FontAwesomeIcon icon={faSearch} />
 				<input id='input' type="text" onKeyPress={(event)=>search(event)} placeholder="제품 검색" />
+			</div>
+			<div className="toggleBtn" onClick={showMenu}>
+				<FontAwesomeIcon icon={faBars} />
 			</div>
 		</div>
 	</div>
