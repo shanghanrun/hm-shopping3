@@ -5,8 +5,9 @@ import { faHeart, faUser } from '@fortawesome/free-regular-svg-icons'
 import { faSearch, faShoppingBag, faBars } from '@fortawesome/free-solid-svg-icons'
 import { useAuth } from '../store/useAuth'
 import { useProducts } from '../store/useProduct'
+import {Navbar, Container, Nav, Offcanvas} from 'react-bootstrap'
 
-const Navbar = () => {
+const NavbarCom = () => {
 	const menus=[
 		'Women', 'Men', 'Baby','Kids',
 		'H&M HOME', 'Sport', 'Sale' 
@@ -108,4 +109,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default NavbarCom
